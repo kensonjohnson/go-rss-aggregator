@@ -16,7 +16,7 @@ help:
 
 # Confirm or cancel recipe
 _confirm:
-  echo -n "Are you sure? [y/N] " && read ans && [ ${ans:-N} = y ]
+  echo "Are you sure? [y/N] " && read ans && [ ${ans:-N} = y ]
 
 # =========================================================================== #
 # DEVELOPMENT
@@ -35,14 +35,14 @@ psql:
   psql $DSN
 
 # Preform migration on DB
-migrate-up: _confirm
+migrate-up version="": _confirm
   echo 'Running up migrations...'
-  migrate -path ./sql/migrations -database $DSN up
+  migrate -path ./sql/migrations -database $DSN up {{version}}
 
 # Undo migrations on DB
-migrate-down: 
+migrate-down version="": 
   echo 'Running down migrations...'
-  migrate -path ./sql/migrations -database $DSN down
+  migrate -path ./sql/migrations -database $DSN down {{version}}
 
 # Create new migration files
 migrate-new name: 
