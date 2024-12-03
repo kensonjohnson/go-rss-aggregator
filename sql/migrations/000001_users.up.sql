@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS users (
-  id UUID PRIMARY KEY,
-  created_at TIMESTAMP NOT NULL,
-  updated_at TIMESTAMP NOT NULL,
-  name TEXT NOT NULL
+    id uuid PRIMARY KEY,
+    created_at timestamp NOT NULL,
+    updated_at timestamp NOT NULL,
+    name text NOT NULL
 );
+
