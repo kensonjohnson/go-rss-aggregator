@@ -1,1 +1,5 @@
+# Environment
 .env
+
+# Build
+tmp/
