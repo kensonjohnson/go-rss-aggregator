@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/kensonjohnson/go-rss-aggregator/internal/auth"
 	"github.com/kensonjohnson/go-rss-aggregator/internal/database"
 )
 
@@ -36,21 +35,9 @@ func (api *apiConfig) handlerCreateUser(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
-	respondWithJSON(w, 201, dbUserToUser(user))
+	respondWithJSON(w, 201, user)
 }
 
-func (api *apiConfig) handlerGetUser(w http.ResponseWriter, r *http.Request) {
-	apiKey, err := auth.GetAPIKey(r.Header)
-	if err != nil {
-		respondWithError(w, 401, fmt.Sprintf("Auth error: %v", err))
-		return
-	}
-
-	user, err := api.DB.GetUserByAPIKey(r.Context(), apiKey)
-	if err != nil {
-		respondWithError(w, 400, fmt.Sprintf("Could not get user: %v", err))
-		return
-	}
-
-	respondWithJSON(w, 200, dbUserToUser(user))
+func (api *apiConfig) handlerGetUser(w http.ResponseWriter, r *http.Request, user database.User) {
+	respondWithJSON(w, 200, user)
 }
