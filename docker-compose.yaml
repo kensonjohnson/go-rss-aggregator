@@ -1,0 +1,17 @@
+name: rss-aggregator
+
+services:
+
+  db:
+    image: postgres
+    restart: on-failure
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: on-failure
+    ports:
+      - 8080:8080
