@@ -49,6 +49,9 @@ migrate-new name:
   echo 'Creating migration files for {{name}}...'
   migrate create -seq -ext=.sql -dir=./sql/migrations {{name}}
 
+migrate-force version: 
+  migrate -path ./sql/migrations -database $DSN force {{version}} 
+
 sqlc-generate:
   sqlc generate
 
