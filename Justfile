@@ -35,14 +35,14 @@ psql:
   psql $DSN
 
 # Preform migration on DB
-migrate-up version="": _confirm
+migrate-up steps="": _confirm
   echo 'Running up migrations...'
-  migrate -path ./sql/migrations -database $DSN up {{version}}
+  migrate -path ./sql/migrations -database $DSN up {{steps}}
 
 # Undo migrations on DB
-migrate-down version="": 
+migrate-down steps="": 
   echo 'Running down migrations...'
-  migrate -path ./sql/migrations -database $DSN down {{version}}
+  migrate -path ./sql/migrations -database $DSN down {{steps}}
 
 # Create new migration files
 migrate-new name: 
