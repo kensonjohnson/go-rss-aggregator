@@ -1,0 +1,21 @@
+meta {
+  name: Create Feed Follow
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:4000/v1/feed-follows
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: ApiKey 0f846de6e066500df0082c0f6eb14f954f8113132606b62a45a4c0a09f7b033f
+}
+
+body:json {
+  {
+    "feed_id":"f7f67bd4-ca28-45b0-a464-9d01cda312cc"
+  }
+}

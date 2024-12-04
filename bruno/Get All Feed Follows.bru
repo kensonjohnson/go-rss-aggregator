@@ -1,0 +1,25 @@
+meta {
+  name: Get All Feed Follows
+  type: http
+  seq: 8
+}
+
+get {
+  url: http://localhost:4000/v1/feed-follows
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: ApiKey {{apiKey}}
+}
+
+body:json {
+  {
+    "feed_id":"f7f67bd4-ca28-45b0-a464-9d01cda312cc"
+  }
+}
+
+vars:pre-request {
+  apiKey: 0f846de6e066500df0082c0f6eb14f954f8113132606b62a45a4c0a09f7b033f
+}
